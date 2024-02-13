@@ -1,0 +1,10 @@
+17:05:42 **** Incremental Build of configuration Debug for project audio_recorder_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 65130 C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/audio_recorder_wrapper.xpfm standalone_ps7_cortexa9_0 C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/system.bif
+sdcard_gen --xpfm C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/audio_recorder_wrapper.xpfm --sys_config audio_recorder_wrapper --bif C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/system.bif --bitstream C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/_ide/bitstream/audio_recorder_wrapper.bit --elf C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/Debug/audio_recorder.elf,ps7_cortexa9_0
+creating BOOT.BIN using C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/_ide/bitstream/audio_recorder_wrapper.bit
+Running C:/Xilinx/Vitis/2020.2/bin/bootgen  -image C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+
+17:05:50 Build Finished (took 8s.693ms)
+

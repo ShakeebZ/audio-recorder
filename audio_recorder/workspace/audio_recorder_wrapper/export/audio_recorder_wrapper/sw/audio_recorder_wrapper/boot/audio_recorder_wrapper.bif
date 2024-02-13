@@ -1,0 +1,7 @@
+/*audio_recorder_wrapper*/
+the_ROM_image:
+{
+  [bootloader]<audio_recorder_wrapper/boot/fsbl.elf>
+   <bitstream> 
+  <elf,ps7_cortexa9_0>
+}

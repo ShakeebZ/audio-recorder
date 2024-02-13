@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="audio_recorder" location="S:/Documents/ENSC452/Milestone0/audio_recorder/workspace/audio_recorder" platform="S:/Documents/ENSC452/Milestone0/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/audio_recorder_wrapper.xpfm" platformUID="xilinx:zed::0.0(custom)" systemProject="audio_recorder_system" sysConfig="audio_recorder_wrapper" runtime="cpp" cpu="standalone_ps7_cortexa9_0" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="c287d9fc6d62386d754ff7832c1c4ef7">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1997524097">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1430768673" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

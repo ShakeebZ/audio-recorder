@@ -1,0 +1,377 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Feb 11 22:03:53 2024
+# Process ID: 24712
+# Current directory: S:/Documents/ENSC452/Milestone0/audio_recorder
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent35628 S:\Documents\ENSC452\Milestone0\audio_recorder\audio_recorder.xpr
+# Log file: S:/Documents/ENSC452/Milestone0/audio_recorder/vivado.log
+# Journal file: S:/Documents/ENSC452/Milestone0/audio_recorder\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 's:/Documents/ENSC452/Zynq_Book/ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'S:/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:10 . Memory (MB): peak = 999.406 ; gain = 0.000
+update_compile_order -fileset sources_1
+open_bd_design {S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/audio_recorder.bd}
+Reading block design file <S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/audio_recorder.bd>...
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:user:zed_audio_ctrl:1.0 - zed_audio_ctrl_0
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_100M
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_1
+Successfully read diagram <audio_recorder> from block design file <S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/audio_recorder.bd>
+open_bd_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:09 . Memory (MB): peak = 999.406 ; gain = 0.000
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+startgroup
+set_property -dict [list CONFIG.PCW_FPGA0_PERIPHERAL_FREQMHZ {200.000000}] [get_bd_cells processing_system7_0]
+endgroup
+validate_bd_design
+WARNING: [BD 41-927] Following properties on pin /zed_audio_ctrl_0/S_AXI_ACLK have been updated from connected ip, but BD cell '/zed_audio_ctrl_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 200000000 
+Please resolve any mismatches by directly setting properties on BD cell </zed_audio_ctrl_0> to completely resolve these warnings.
+validate_bd_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:15 . Memory (MB): peak = 1111.449 ; gain = 18.738
+save_bd_design
+Wrote  : <S:\Documents\ENSC452\Milestone0\audio_recorder\audio_recorder.srcs\sources_1\bd\audio_recorder\audio_recorder.bd> 
+Wrote  : <S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/ui/bd_1ff69647.ui> 
+reset_run synth_1
+reset_run audio_recorder_rst_ps7_0_100M_0_synth_1
+reset_run audio_recorder_processing_system7_0_0_synth_1
+reset_run audio_recorder_xbar_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 6
+INFO: [BD 41-1662] The design 'audio_recorder.bd' is already validated. Therefore parameter propagation will not be re-run.
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/synth/audio_recorder.vhd
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/sim/audio_recorder.vhd
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hdl/audio_recorder_wrapper.vhd
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_GP0'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_ps7_0_100M .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_auto_pc_0/audio_recorder_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hw_handoff/audio_recorder.hwh
+Generated Block Design Tcl file s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hw_handoff/audio_recorder_bd.tcl
+Generated Hardware Definition File s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/synth/audio_recorder.hwdef
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_auto_pc_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_processing_system7_0_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_rst_ps7_0_100M_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_xbar_0
+[Sun Feb 11 22:06:44 2024] Launched audio_recorder_rst_ps7_0_100M_0_synth_1, audio_recorder_processing_system7_0_0_synth_1, audio_recorder_xbar_0_synth_1, audio_recorder_auto_pc_0_synth_1, synth_1...
+Run output will be captured here:
+audio_recorder_rst_ps7_0_100M_0_synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/audio_recorder_rst_ps7_0_100M_0_synth_1/runme.log
+audio_recorder_processing_system7_0_0_synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/audio_recorder_processing_system7_0_0_synth_1/runme.log
+audio_recorder_xbar_0_synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/audio_recorder_xbar_0_synth_1/runme.log
+audio_recorder_auto_pc_0_synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/audio_recorder_auto_pc_0_synth_1/runme.log
+synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/synth_1/runme.log
+[Sun Feb 11 22:06:45 2024] Launched impl_1...
+Run output will be captured here: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:29 ; elapsed = 00:00:34 . Memory (MB): peak = 1302.859 ; gain = 191.410
+open_run impl_1
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.113 . Memory (MB): peak = 1467.438 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 22 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.323 . Memory (MB): peak = 2164.039 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.324 . Memory (MB): peak = 2164.039 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2164.039 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 4 instances
+
+open_run: Time (s): cpu = 00:00:24 ; elapsed = 00:00:19 . Memory (MB): peak = 2269.250 ; gain = 955.281
+open_bd_design {S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/audio_recorder.bd}
+set_property offset 0x4FFF0000 [get_bd_addr_segs {processing_system7_0/Data/SEG_zed_audio_ctrl_0_reg0}]
+set_property offset 0x4FFE0000 [get_bd_addr_segs {processing_system7_0/Data/SEG_zed_audio_ctrl_0_reg0}]
+set_property offset 0x4FFF0000 [get_bd_addr_segs {processing_system7_0/Data/SEG_zed_audio_ctrl_0_reg0}]
+set_property offset 0x41220000 [get_bd_addr_segs {processing_system7_0/Data/SEG_zed_audio_ctrl_0_reg0}]
+startgroup
+set_property -dict [list CONFIG.C_INTERRUPT_PRESENT {1}] [get_bd_cells axi_gpio_1]
+endgroup
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+startgroup
+set_property -dict [list CONFIG.PCW_USE_FABRIC_INTERRUPT {1} CONFIG.PCW_IRQ_F2P_INTR {1}] [get_bd_cells processing_system7_0]
+endgroup
+regenerate_bd_layout
+connect_bd_net [get_bd_pins processing_system7_0/IRQ_F2P] [get_bd_pins axi_gpio_1/ip2intc_irpt]
+save_bd_design
+Wrote  : <S:\Documents\ENSC452\Milestone0\audio_recorder\audio_recorder.srcs\sources_1\bd\audio_recorder\audio_recorder.bd> 
+Wrote  : <S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/ui/bd_1ff69647.ui> 
+reset_run synth_1
+reset_run audio_recorder_processing_system7_0_0_synth_1
+reset_run audio_recorder_axi_gpio_1_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 6
+WARNING: [BD 41-927] Following properties on pin /zed_audio_ctrl_0/S_AXI_ACLK have been updated from connected ip, but BD cell '/zed_audio_ctrl_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 200000000 
+Please resolve any mismatches by directly setting properties on BD cell </zed_audio_ctrl_0> to completely resolve these warnings.
+Wrote  : <S:\Documents\ENSC452\Milestone0\audio_recorder\audio_recorder.srcs\sources_1\bd\audio_recorder\audio_recorder.bd> 
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/synth/audio_recorder.vhd
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/sim/audio_recorder.vhd
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hdl/audio_recorder_wrapper.vhd
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_GP0'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block axi_gpio_1 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_auto_pc_0/audio_recorder_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hw_handoff/audio_recorder.hwh
+Generated Block Design Tcl file s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hw_handoff/audio_recorder_bd.tcl
+Generated Hardware Definition File s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/synth/audio_recorder.hwdef
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_auto_pc_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_axi_gpio_1_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_processing_system7_0_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_xbar_0
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP audio_recorder_auto_pc_0, cache-ID = 094930abdc6daec5; cache size = 6.017 MB.
+[Sun Feb 11 23:54:07 2024] Launched audio_recorder_processing_system7_0_0_synth_1, audio_recorder_axi_gpio_1_0_synth_1, audio_recorder_xbar_0_synth_1, synth_1...
+Run output will be captured here:
+audio_recorder_processing_system7_0_0_synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/audio_recorder_processing_system7_0_0_synth_1/runme.log
+audio_recorder_axi_gpio_1_0_synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/audio_recorder_axi_gpio_1_0_synth_1/runme.log
+audio_recorder_xbar_0_synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/audio_recorder_xbar_0_synth_1/runme.log
+synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/synth_1/runme.log
+[Sun Feb 11 23:54:07 2024] Launched impl_1...
+Run output will be captured here: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2413.801 ; gain = 21.480
+write_hw_platform -fixed -include_bit -force -file S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa
+INFO: [Vivado 12-4895] Creating Hardware Platform: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa ...
+INFO: [Hsi 55-2053] elapsed time for repository (S:/Xilinx/Vivado/2020.2/data\embeddedsw) loading 1 seconds
+INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
+INFO: [Vivado 12-4896] Successfully created Hardware Platform: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa
+write_hw_platform: Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 2553.684 ; gain = 139.883
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7z020clg484-1
+INFO: [Project 1-454] Reading design checkpoint 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_0_0/audio_recorder_axi_gpio_0_0.dcp' for cell 'audio_recorder_i/axi_gpio_0'
+INFO: [Project 1-454] Reading design checkpoint 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_1_0/audio_recorder_axi_gpio_1_0.dcp' for cell 'audio_recorder_i/axi_gpio_1'
+INFO: [Project 1-454] Reading design checkpoint 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_processing_system7_0_0/audio_recorder_processing_system7_0_0.dcp' for cell 'audio_recorder_i/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_rst_ps7_0_100M_0/audio_recorder_rst_ps7_0_100M_0.dcp' for cell 'audio_recorder_i/rst_ps7_0_100M'
+INFO: [Project 1-454] Reading design checkpoint 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_zed_audio_ctrl_0_0/audio_recorder_zed_audio_ctrl_0_0.dcp' for cell 'audio_recorder_i/zed_audio_ctrl_0'
+INFO: [Project 1-454] Reading design checkpoint 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_xbar_0/audio_recorder_xbar_0.dcp' for cell 'audio_recorder_i/ps7_0_axi_periph/xbar'
+INFO: [Project 1-454] Reading design checkpoint 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_auto_pc_0/audio_recorder_auto_pc_0.dcp' for cell 'audio_recorder_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.131 . Memory (MB): peak = 2553.684 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 22 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_processing_system7_0_0/audio_recorder_processing_system7_0_0.xdc] for cell 'audio_recorder_i/processing_system7_0/inst'
+Finished Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_processing_system7_0_0/audio_recorder_processing_system7_0_0.xdc] for cell 'audio_recorder_i/processing_system7_0/inst'
+Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_rst_ps7_0_100M_0/audio_recorder_rst_ps7_0_100M_0_board.xdc] for cell 'audio_recorder_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_rst_ps7_0_100M_0/audio_recorder_rst_ps7_0_100M_0_board.xdc] for cell 'audio_recorder_i/rst_ps7_0_100M/U0'
+Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_rst_ps7_0_100M_0/audio_recorder_rst_ps7_0_100M_0.xdc] for cell 'audio_recorder_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_rst_ps7_0_100M_0/audio_recorder_rst_ps7_0_100M_0.xdc] for cell 'audio_recorder_i/rst_ps7_0_100M/U0'
+Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_0_0/audio_recorder_axi_gpio_0_0_board.xdc] for cell 'audio_recorder_i/axi_gpio_0/U0'
+Finished Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_0_0/audio_recorder_axi_gpio_0_0_board.xdc] for cell 'audio_recorder_i/axi_gpio_0/U0'
+Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_0_0/audio_recorder_axi_gpio_0_0.xdc] for cell 'audio_recorder_i/axi_gpio_0/U0'
+Finished Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_0_0/audio_recorder_axi_gpio_0_0.xdc] for cell 'audio_recorder_i/axi_gpio_0/U0'
+Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_1_0/audio_recorder_axi_gpio_1_0_board.xdc] for cell 'audio_recorder_i/axi_gpio_1/U0'
+Finished Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_1_0/audio_recorder_axi_gpio_1_0_board.xdc] for cell 'audio_recorder_i/axi_gpio_1/U0'
+Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_1_0/audio_recorder_axi_gpio_1_0.xdc] for cell 'audio_recorder_i/axi_gpio_1/U0'
+Finished Parsing XDC File [s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_axi_gpio_1_0/audio_recorder_axi_gpio_1_0.xdc] for cell 'audio_recorder_i/axi_gpio_1/U0'
+Parsing XDC File [S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/constrs_1/new/audio_recorder.xdc]
+Finished Parsing XDC File [S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/constrs_1/new/audio_recorder.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 2568.438 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 4 instances
+
+open_run: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 2584.949 ; gain = 31.266
+current_design impl_1
+create_ip_run [get_files -of_objects [get_fileset sources_1] S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/audio_recorder.bd]
+refresh_design
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.136 . Memory (MB): peak = 2623.203 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 22 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.405 . Memory (MB): peak = 2623.203 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.405 . Memory (MB): peak = 2623.203 ; gain = 0.000
+refresh_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 2623.203 ; gain = 36.664
+write_hw_platform -fixed -include_bit -force -file S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa
+INFO: [Vivado 12-4895] Creating Hardware Platform: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa ...
+INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
+INFO: [Vivado 12-4896] Successfully created Hardware Platform: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa
+write_hw_platform: Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 2881.707 ; gain = 197.945
+open_bd_design {S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/audio_recorder.bd}
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
+endgroup
+delete_bd_objs [get_bd_nets axi_gpio_1_ip2intc_irpt]
+connect_bd_net [get_bd_pins xlconcat_0/dout] [get_bd_pins processing_system7_0/IRQ_F2P]
+connect_bd_net [get_bd_pins axi_gpio_1/ip2intc_irpt] [get_bd_pins xlconcat_0/In1]
+connect_bd_net [get_bd_pins axi_gpio_1/ip2intc_irpt] [get_bd_pins xlconcat_0/In0]
+validate_bd_design
+WARNING: [BD 41-927] Following properties on pin /zed_audio_ctrl_0/S_AXI_ACLK have been updated from connected ip, but BD cell '/zed_audio_ctrl_0' does not accept parameter changes, so they may not be synchronized with cell properties:
+	FREQ_HZ = 200000000 
+Please resolve any mismatches by directly setting properties on BD cell </zed_audio_ctrl_0> to completely resolve these warnings.
+validate_bd_design: Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2914.328 ; gain = 2.840
+save_bd_design
+Wrote  : <S:\Documents\ENSC452\Milestone0\audio_recorder\audio_recorder.srcs\sources_1\bd\audio_recorder\audio_recorder.bd> 
+Wrote  : <S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/ui/bd_1ff69647.ui> 
+reset_run synth_1
+reset_run audio_recorder_processing_system7_0_0_synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 6
+INFO: [BD 41-1662] The design 'audio_recorder.bd' is already validated. Therefore parameter propagation will not be re-run.
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/synth/audio_recorder.vhd
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/sim/audio_recorder.vhd
+VHDL Output written to : s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hdl/audio_recorder_wrapper.vhd
+WARNING: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_GP0'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+WARNING: [IP_Flow 19-4994] Overwriting existing constraint file 's:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/ip/audio_recorder_auto_pc_0/audio_recorder_auto_pc_0_ooc.xdc'
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block xlconcat_0 .
+Exporting to file s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hw_handoff/audio_recorder.hwh
+Generated Block Design Tcl file s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/hw_handoff/audio_recorder_bd.tcl
+Generated Hardware Definition File s:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.gen/sources_1/bd/audio_recorder/synth/audio_recorder.hwdef
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_auto_pc_0
+INFO: [IP_Flow 19-7066] Running IP cache check for IP audio_recorder_processing_system7_0_0
+INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP audio_recorder_auto_pc_0, cache-ID = 094930abdc6daec5; cache size = 7.763 MB.
+WARNING: [Project 1-478] Design 'synth_1' is stale and will not be used when launching 'impl_1'
+[Mon Feb 12 01:08:47 2024] Launched audio_recorder_processing_system7_0_0_synth_1, synth_1...
+Run output will be captured here:
+audio_recorder_processing_system7_0_0_synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/audio_recorder_processing_system7_0_0_synth_1/runme.log
+synth_1: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/synth_1/runme.log
+[Mon Feb 12 01:08:47 2024] Launched impl_1...
+Run output will be captured here: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 2917.793 ; gain = 3.465
+write_hw_platform -fixed -include_bit -force -file S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa
+INFO: [Vivado 12-4895] Creating Hardware Platform: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa ...
+INFO: [Vivado 12-12467] The Hardware Platform can be used for Hardware
+INFO: [Vivado 12-4896] Successfully created Hardware Platform: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder_wrapper.xsa
+write_hw_platform: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2939.094 ; gain = 21.301
+delete_bd_objs [get_bd_nets axi_gpio_1_ip2intc_irpt] [get_bd_nets xlconcat_0_dout] [get_bd_cells xlconcat_0]
+connect_bd_net [get_bd_pins axi_gpio_1/ip2intc_irpt] [get_bd_pins processing_system7_0/IRQ_F2P]
+regenerate_bd_layout
+delete_bd_objs [get_bd_intf_nets processing_system7_0_DDR] [get_bd_intf_nets processing_system7_0_FIXED_IO] [get_bd_intf_nets processing_system7_0_IIC_0] [get_bd_intf_nets processing_system7_0_M_AXI_GP0] [get_bd_nets axi_gpio_1_ip2intc_irpt] [get_bd_nets processing_system7_0_FCLK_CLK1] [get_bd_nets processing_system7_0_FCLK_RESET0_N] [get_bd_cells processing_system7_0]
+delete_bd_objs [get_bd_intf_nets ps7_0_axi_periph_M01_AXI] [get_bd_intf_nets axi_gpio_0_GPIO] [get_bd_cells axi_gpio_0]
+delete_bd_objs [get_bd_intf_nets ps7_0_axi_periph_M02_AXI] [get_bd_intf_nets axi_gpio_1_GPIO] [get_bd_intf_nets axi_gpio_1_GPIO2] [get_bd_cells axi_gpio_1]
+delete_bd_objs [get_bd_intf_nets ps7_0_axi_periph_M00_AXI] [get_bd_cells ps7_0_axi_periph]
+delete_bd_objs [get_bd_nets zed_audio_ctrl_0_BCLK] [get_bd_nets zed_audio_ctrl_0_LRCLK] [get_bd_nets SDATA_I_0_1] [get_bd_nets zed_audio_ctrl_0_SDATA_O] [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_nets rst_ps7_0_100M_peripheral_aresetn] [get_bd_cells zed_audio_ctrl_0]
+delete_bd_objs [get_bd_cells rst_ps7_0_100M]
+delete_bd_objs [get_bd_ports SDATA_I]
+delete_bd_objs [get_bd_ports SDATA_O]
+delete_bd_objs [get_bd_ports BCLK]
+delete_bd_objs [get_bd_ports LRCLK]
+delete_bd_objs [get_bd_intf_ports sws_8bits]
+delete_bd_objs [get_bd_intf_ports btns_5bits]
+delete_bd_objs [get_bd_intf_ports GPIO]
+delete_bd_objs [get_bd_ports FCLK_CLK1]
+delete_bd_objs [get_bd_intf_ports IIC_0]
+delete_bd_objs [get_bd_intf_ports FIXED_IO]
+delete_bd_objs [get_bd_intf_ports DDR]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0
+endgroup
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+set_property -dict [list CONFIG.PCW_USE_FABRIC_INTERRUPT {1} CONFIG.PCW_EN_CLK1_PORT {1} CONFIG.PCW_IRQ_F2P_INTR {1}] [get_bd_cells processing_system7_0]
+apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" apply_board_preset "1" Master "Disable" Slave "Disable" }  [get_bd_cells processing_system7_0]
+undo
+INFO: [Common 17-17] undo 'apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" apply_board_preset "1" Master "Disable" Slave "Disable" }  [get_bd_cells processing_system7_0]'
+undo
+INFO: [Common 17-17] undo 'set_property -dict [list CONFIG.PCW_USE_FABRIC_INTERRUPT {1} CONFIG.PCW_EN_CLK1_PORT {1} CONFIG.PCW_IRQ_F2P_INTR {1}] [get_bd_cells processing_system7_0]'
+undo
+INFO: [Common 17-17] undo 'endgroup'
+INFO: [Common 17-17] undo 'create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0'
+INFO: [Common 17-17] undo 'startgroup'
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" apply_board_preset "1" Master "Disable" Slave "Disable" }  [get_bd_cells processing_system7_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:user:led_controller:1.0 led_controller_0
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {Auto} Clk_slave {Auto} Clk_xbar {Auto} Master {/processing_system7_0/M_AXI_GP0} Slave {/led_controller_0/S00_AXI} ddr_seg {Auto} intc_ip {New AXI Interconnect} master_apm {0}}  [get_bd_intf_pins led_controller_0/S00_AXI]
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+Slave segment '/led_controller_0/S00_AXI/S00_AXI_reg' is being assigned into address space '/processing_system7_0/Data' at <0x43C0_0000 [ 64K ]>.
+startgroup
+make_bd_pins_external  [get_bd_pins led_controller_0/LEDs_out]
+endgroup
+set_property name LEDs_out [get_bd_ports LEDs_out_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:user:zed_audio_ctrl:1.0 zed_audio_ctrl_0
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/processing_system7_0/FCLK_CLK0 (100 MHz)} Clk_slave {Auto} Clk_xbar {/processing_system7_0/FCLK_CLK0 (100 MHz)} Master {/processing_system7_0/M_AXI_GP0} Slave {/zed_audio_ctrl_0/S_AXI} ddr_seg {Auto} intc_ip {/ps7_0_axi_periph} master_apm {0}}  [get_bd_intf_pins zed_audio_ctrl_0/S_AXI]
+Slave segment '/zed_audio_ctrl_0/S_AXI/reg0' is being assigned into address space '/processing_system7_0/Data' at <0x43C1_0000 [ 64K ]>.
+startgroup
+make_bd_pins_external  [get_bd_pins zed_audio_ctrl_0/SDATA_I] [get_bd_pins zed_audio_ctrl_0/LRCLK] [get_bd_pins zed_audio_ctrl_0/BCLK] [get_bd_pins zed_audio_ctrl_0/SDATA_O]
+endgroup
+set_property name BCLK [get_bd_ports BCLK_0]
+set_property name LRCLK [get_bd_ports LRCLK_0]
+set_property name SDATA_O [get_bd_ports SDATA_O_0]
+set_property name SDATA_I [get_bd_ports SDATA_I_0]
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+startgroup
+set_property -dict [list CONFIG.PCW_FPGA1_PERIPHERAL_FREQMHZ {10.000000} CONFIG.PCW_USE_FABRIC_INTERRUPT {1} CONFIG.PCW_EN_CLK1_PORT {1} CONFIG.PCW_IRQ_F2P_INTR {1} CONFIG.PCW_QSPI_GRP_SINGLE_SS_ENABLE {1} CONFIG.PCW_I2C0_PERIPHERAL_ENABLE {1}] [get_bd_cells processing_system7_0]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins processing_system7_0/FCLK_CLK1]
+make_bd_intf_pins_external  [get_bd_intf_pins processing_system7_0/IIC_0]
+endgroup
+set_property name IIC_0 [get_bd_intf_ports IIC_0_0]
+set_property name FCLK_CLK1 [get_bd_ports FCLK_CLK1_0]
+regenerate_bd_layout
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/processing_system7_0/FCLK_CLK0 (100 MHz)} Clk_slave {Auto} Clk_xbar {/processing_system7_0/FCLK_CLK0 (100 MHz)} Master {/processing_system7_0/M_AXI_GP0} Slave {/axi_gpio_0/S_AXI} ddr_seg {Auto} intc_ip {/ps7_0_axi_periph} master_apm {0}}  [get_bd_intf_pins axi_gpio_0/S_AXI]
+Slave segment '/axi_gpio_0/S_AXI/Reg' is being assigned into address space '/processing_system7_0/Data' at <0x4120_0000 [ 64K ]>.
+startgroup
+set_property -dict [list CONFIG.C_GPIO_WIDTH {2}] [get_bd_cells axi_gpio_0]
+endgroup
+startgroup
+make_bd_intf_pins_external  [get_bd_intf_pins axi_gpio_0/GPIO]
+endgroup
+set_property name GPIO [get_bd_intf_ports GPIO_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_1
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/processing_system7_0/FCLK_CLK0 (100 MHz)} Clk_slave {Auto} Clk_xbar {/processing_system7_0/FCLK_CLK0 (100 MHz)} Master {/processing_system7_0/M_AXI_GP0} Slave {/axi_gpio_1/S_AXI} ddr_seg {Auto} intc_ip {/ps7_0_axi_periph} master_apm {0}}  [get_bd_intf_pins axi_gpio_1/S_AXI]
+Slave segment '/axi_gpio_1/S_AXI/Reg' is being assigned into address space '/processing_system7_0/Data' at <0x4121_0000 [ 64K ]>.
+startgroup
+set_property -dict [list CONFIG.C_IS_DUAL {1} CONFIG.C_INTERRUPT_PRESENT {1}] [get_bd_cells axi_gpio_1]
+endgroup
+startgroup
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Board_Interface {btns_5bits ( Push buttons ) } Manual_Source {Auto}}  [get_bd_intf_pins axi_gpio_1/GPIO]
+INFO: [board_rule 100-100] set_property CONFIG.USE_BOARD_FLOW true [get_bd_cells /axi_gpio_1]
+INFO: [board_rule 100-100] set_property CONFIG.GPIO_BOARD_INTERFACE btns_5bits [get_bd_cells /axi_gpio_1]
+INFO: [BoardRule 102-8] create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 btns_5bits
+INFO: [BoardRule 102-9] connect_bd_intf_net /btns_5bits /axi_gpio_1/GPIO
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Board_Interface {sws_8bits ( DIP switches ) } Manual_Source {Auto}}  [get_bd_intf_pins axi_gpio_1/GPIO2]
+INFO: [board_rule 100-100] set_property CONFIG.GPIO2_BOARD_INTERFACE sws_8bits [get_bd_cells /axi_gpio_1]
+INFO: [BoardRule 102-8] create_bd_intf_port -mode Master -vlnv xilinx.com:interface:gpio_rtl:1.0 sws_8bits
+INFO: [BoardRule 102-9] connect_bd_intf_net /sws_8bits /axi_gpio_1/GPIO2
+endgroup
+connect_bd_net [get_bd_pins axi_gpio_1/ip2intc_irpt] [get_bd_pins processing_system7_0/IRQ_F2P]
+regenerate_bd_layout
+save_bd_design
+Wrote  : <S:\Documents\ENSC452\Milestone0\audio_recorder\audio_recorder.srcs\sources_1\bd\audio_recorder\audio_recorder.bd> 
+Wrote  : <S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.srcs/sources_1/bd/audio_recorder/ui/bd_1ff69647.ui> 
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 6

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Feb 12 05:30:04 2024
+# Process ID: 31420
+# Current directory: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/impl_1
+# Command line: vivado.exe -log audio_recorder_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source audio_recorder_wrapper.tcl -notrace
+# Log file: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/impl_1/audio_recorder_wrapper.vdi
+# Journal file: S:/Documents/ENSC452/Milestone0/audio_recorder/audio_recorder.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source audio_recorder_wrapper.tcl -notrace

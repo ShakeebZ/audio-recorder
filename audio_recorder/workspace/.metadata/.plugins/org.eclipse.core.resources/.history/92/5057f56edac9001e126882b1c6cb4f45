@@ -1,0 +1,253 @@
+/*
+ * ip_functions.c
+ *
+ * Contains all functions which pertain to setup and use of IP periperals.
+ */
+
+#include "audio_recorder.h"
+
+
+
+
+/* ---------------------------------------------------------------------------- *
+ * 								audio_stream()									*
+ * ---------------------------------------------------------------------------- *
+ * This function performs audio loopback streaming by sampling the input audio
+ * from the codec and then immediately passing the sample to the output of the
+ * codec.
+ *
+ * The main menu can be accessed by entering 'q' on the keyboard.
+ * ---------------------------------------------------------------------------- */
+void audio_stream(){
+	u32  in_left, in_right;
+
+	while (!XUartPs_IsReceiveData(UART_BASEADDR)){
+		// Read audio input from codec
+		in_left = Xil_In32(I2S_DATA_RX_L_REG);
+		in_right = Xil_In32(I2S_DATA_RX_R_REG);
+		// Write audio output to codec
+		Xil_Out32(I2S_DATA_TX_L_REG, in_left);
+		Xil_Out32(I2S_DATA_TX_R_REG, in_right);
+	}
+
+	/* If input from the terminal is 'q', then return to menu.
+	 * Else, continue streaming. */
+	if(XUartPs_ReadReg(UART_BASEADDR, XUARTPS_FIFO_OFFSET) == 'q') menu();
+	else audio_stream();
+} // audio_stream()
+
+/* ---------------------------------------------------------------------------- *
+ * 								audio_record()									*
+ * ---------------------------------------------------------------------------- *
+ * This function performs audio loopback streaming by sampling the input audio
+ * from the codec and then immediately passing the sample to the output of the
+ * codec.
+ *
+ * The main menu can be accessed by entering 'r' on the keyboard.
+ * ---------------------------------------------------------------------------- */
+void audio_record(){
+
+
+	while (!XUartPs_IsReceiveData(UART_BASEADDR)){
+		// Read audio input from codec
+
+		if (&audioArray[ind] <= audioUpperBound) {
+			audioArray[ind] = Xil_In32(I2S_DATA_RX_L_REG);
+		}
+		else {
+			audioEnd = audioUpperBound;
+			break;
+		}
+
+		ind++;
+
+		if (&audioArray[ind] <= audioUpperBound) {
+				audioArray[ind] = Xil_In32(I2S_DATA_RX_R_REG);
+		}
+		else {
+			audioEnd = audioUpperBound;
+			break;
+		}
+
+		ind++;
+		break;
+	}
+
+} // audio_record()
+
+void audio_playback() {
+
+	if (&audioArray[ind] > audioEnd) {
+		ind = 0;
+		playback = 0;
+		xil_printf("Audio Playback finished!\r\n");
+
+	}
+	else {
+		Xil_Out32(I2S_DATA_TX_L_REG, audioArray[ind]);
+		Xil_Out32(I2S_DATA_TX_R_REG, audioArray[ind + 1]);
+	}
+	ind = ind + 2 * PLAYBACK_RATE;
+//	Xil_Out32(I2S_DATA_TX_L_REG, 4294967296);
+//	Xil_Out32(I2S_DATA_TX_R_REG, 4294967296/2);
+}
+
+/* ---------------------------------------------------------------------------- *
+ * 								gpio_initi()									*
+ * ---------------------------------------------------------------------------- *
+ * Initialises the GPIO driver for the push buttons and switches.
+ * ---------------------------------------------------------------------------- */
+unsigned char gpio_init()
+{
+	int Status;
+
+	Status = XGpio_Initialize(&BTNInst, BUTTON_SWITCH_ID);
+	if(Status != XST_SUCCESS) return XST_FAILURE;
+
+//	// Initialise Push Buttons
+//	Status = XGpio_Initialize(&BTNInst, BTNS_DEVICE_ID);
+//	if(Status != XST_SUCCESS) return XST_FAILURE;
+
+//	XGpio_SetDataDirection(&BTNInst, 1, 0xFF);
+
+//	XGpio_SetDataDirection(&Gpio, SWITCH_CHANNEL, 0xFF);
+	XGpio_SetDataDirection(&BTNInst, BUTTON_CHANNEL, 0xFF);
+
+	return XST_SUCCESS;
+}
+
+
+// Interrupt functions
+
+void BTN_Intr_Handler(void *InstancePtr)
+{
+	// Disable GPIO interrupts
+	XGpio_InterruptDisable(&BTNInst, BTN_INT);
+	// Ignore additional button presses
+	if ((XGpio_InterruptGetStatus(&BTNInst) & BTN_INT) !=
+			BTN_INT) {
+			return;
+		}
+	btn_value = XGpio_DiscreteRead(&BTNInst, 1);
+	// Increment counter based on button value
+	// Reset if centre button pressed
+
+	if (btn_value == 1) {
+		//BTNC
+		recording = 1;
+		xil_printf("Recording Audio!\r\n");
+	}
+	else if (btn_value == 2) {
+		//BTND
+			recording = 0;
+			ind = 0;
+			xil_printf("Stopped Recording Audio!\r\n");
+		}
+	else if (btn_value == 4) {
+		//BTNL
+		audio_stream();
+		xil_printf("Streaming Audio!\r\n");
+		}
+	else if (btn_value == 8) {
+		//BTNR
+		}
+	else if (btn_value == 16) {
+		//BTNU
+		playback = 1;
+		ind = 0;
+		xil_printf("Audio Playback started!\r\n");
+	}
+
+    (void)XGpio_InterruptClear(&BTNInst, BTN_INT);
+    // Enable GPIO interrupts
+    XGpio_InterruptEnable(&BTNInst, BTN_INT);
+//    menu();
+}
+
+void TMR_Intr_Handler(void *data)
+{
+	if (XTmrCtr_IsExpired(&TMRInst,0)){
+		if (recording == 1) {
+			if(tmr_count == 1){
+				XTmrCtr_Stop(&TMRInst,0);
+				tmr_count = 0;
+				audio_record();
+				XTmrCtr_Reset(&TMRInst,0);
+				XTmrCtr_Start(&TMRInst,0);
+			}
+
+			else tmr_count++;
+		}
+		else if (playback == 1) {
+			if(tmr_count == (PLAYBACK_RATE - 1)){
+				XTmrCtr_Stop(&TMRInst,0);
+				tmr_count = 0;
+				audio_playback();
+				XTmrCtr_Reset(&TMRInst,0);
+				XTmrCtr_Start(&TMRInst,0);
+			}
+
+			else tmr_count++;
+		}
+	}
+}
+
+int InterruptSystemSetup(XScuGic *XScuGicInstancePtr)
+{
+	// Enable interrupt
+	XGpio_InterruptEnable(&BTNInst, BTN_INT);
+	XGpio_InterruptGlobalEnable(&BTNInst);
+
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+			 	 	 	 	 	 (Xil_ExceptionHandler)XScuGic_InterruptHandler,
+			 	 	 	 	 	 XScuGicInstancePtr);
+	Xil_ExceptionEnable();
+
+	return XST_SUCCESS;
+}
+
+int IntcInitFunction(u16 DeviceId, XTmrCtr *TmrInstancePtr, XGpio *GpioInstancePtr)
+{
+	XScuGic_Config *IntcConfig;
+	int status;
+
+	// Interrupt controller initialisation
+	IntcConfig = XScuGic_LookupConfig(DeviceId);
+	status = XScuGic_CfgInitialize(&INTCInst, IntcConfig, IntcConfig->CpuBaseAddress);
+	if(status != XST_SUCCESS) return XST_FAILURE;
+
+	// Call to interrupt setup
+	status = InterruptSystemSetup(&INTCInst);
+	if(status != XST_SUCCESS) return XST_FAILURE;
+
+	// Connect GPIO interrupt to handler
+	status = XScuGic_Connect(&INTCInst,
+					  	  	 INTC_GPIO_INTERRUPT_ID,
+					  	  	 (Xil_ExceptionHandler)BTN_Intr_Handler,
+					  	  	 (void *)GpioInstancePtr);
+//	status = XScuGic_Connect(&INTCInst,
+//							INTC_DEVICE_ID,
+//					  	  	 (Xil_ExceptionHandler)BTN_Intr_Handler,
+//					  	  	 (void *)GpioInstancePtr);
+	if(status != XST_SUCCESS) return XST_FAILURE;
+
+	// Connect timer interrupt to handler
+	status = XScuGic_Connect(&INTCInst,
+							 INTC_TMR_INTERRUPT_ID,
+							 (Xil_ExceptionHandler)TMR_Intr_Handler,
+							 (void *)TmrInstancePtr);
+	if(status != XST_SUCCESS) return XST_FAILURE;
+
+	// Enable GPIO interrupts interrupt
+	XGpio_InterruptEnable(GpioInstancePtr, 1);
+	XGpio_InterruptGlobalEnable(GpioInstancePtr);
+
+	// Enable GPIO interrupts in the controller
+	XScuGic_Enable(&INTCInst, INTC_GPIO_INTERRUPT_ID);
+//	XScuGic_Enable(&INTCInst, INTC_DEVICE_ID);
+
+	XScuGic_Enable(&INTCInst, INTC_TMR_INTERRUPT_ID);
+
+	return XST_SUCCESS;
+}
+

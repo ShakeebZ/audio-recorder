@@ -1,0 +1,54 @@
+Nothing to build in platform 'audio_recorder_wrapper'
+
+16:21:54 **** Incremental Build of configuration Debug for project audio_recorder ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/ip_functions.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/ip_functions.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/sw/audio_recorder_wrapper/standalone_ps7_cortexa9_0/bspinclude/include -MMD -MP -MF"src/ip_functions.d" -MT"src/ip_functions.o" -o "src/ip_functions.o" "../src/ip_functions.c"
+../src/ip_functions.c: In function 'BTN_Intr_Handler':
+../src/ip_functions.c:169:18: warning: statement with no effect [-Wunused-value]
+  169 |    PLAYBACK_RATE == 1;
+      |    ~~~~~~~~~~~~~~^~~~
+../src/ip_functions.c:185:18: warning: statement with no effect [-Wunused-value]
+  185 |    PLAYBACK_RATE == 1;
+      |    ~~~~~~~~~~~~~~^~~~
+'Finished building: ../src/ip_functions.c'
+' '
+'Building target: audio_recorder.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/sw/audio_recorder_wrapper/standalone_ps7_cortexa9_0/bsplib/lib -o "audio_recorder.elf"  ./src/audio.o ./src/audio_recorder.o ./src/ip_functions.o   -lm -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: audio_recorder.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size audio_recorder.elf  |tee "audio_recorder.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  42020	   1976	  22760	  66756	  104c4	audio_recorder.elf
+'Finished building: audio_recorder.elf.size'
+' '
+16:21:55 **** Incremental Build of configuration Debug for project audio_recorder_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 65130 C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/audio_recorder_wrapper.xpfm standalone_ps7_cortexa9_0 C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/system.bif
+sdcard_gen --xpfm C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/audio_recorder_wrapper.xpfm --sys_config audio_recorder_wrapper --bif C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/system.bif --bitstream C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/_ide/bitstream/audio_recorder_wrapper.bit --elf C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/Debug/audio_recorder.elf,ps7_cortexa9_0
+creating BOOT.BIN using C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/_ide/bitstream/audio_recorder_wrapper.bit
+Running C:/Xilinx/Vitis/2020.2/bin/bootgen  -image C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
+Nothing to build in platform 'audio_recorder_wrapper'
+
+17:05:41 **** Incremental Build of configuration Debug for project audio_recorder ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+make[1]: Nothing to be done for 'main-build'.
+17:05:42 **** Incremental Build of configuration Debug for project audio_recorder_system ****
+make all 
+Generating bif file for the system project
+generate_system_bif.bat 65130 C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/audio_recorder_wrapper.xpfm standalone_ps7_cortexa9_0 C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/system.bif
+sdcard_gen --xpfm C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_wrapper/export/audio_recorder_wrapper/audio_recorder_wrapper.xpfm --sys_config audio_recorder_wrapper --bif C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/system.bif --bitstream C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/_ide/bitstream/audio_recorder_wrapper.bit --elf C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/Debug/audio_recorder.elf,ps7_cortexa9_0
+creating BOOT.BIN using C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder/_ide/bitstream/audio_recorder_wrapper.bit
+Running C:/Xilinx/Vitis/2020.2/bin/bootgen  -image C:/Users/saz5/Downloads/audio_recorder/workspace/audio_recorder_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN
